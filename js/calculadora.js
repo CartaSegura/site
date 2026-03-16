@@ -13,6 +13,12 @@
     return isNaN(n) ? null : n;
   }
 
+  function trackEvent(name, params) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", name, params || {});
+    }
+  }
+
   function runSimulation() {
     var valorCredito = parseNum("valor-credito");
     var valorParcela = parseNum("valor-parcela");
@@ -102,6 +108,19 @@
     }
 
     document.getElementById("calc-result").removeAttribute("hidden");
+
+    // Evento customizado no GA4 com dados principais da simulação
+    trackEvent("calc_simulation", {
+      role: "seller",
+      currency: "BRL",
+      credito_nominal: valorCredito,
+      saldo_devedor: saldoDevedor,
+      saldo_bom: saldoBom,
+      desagio_percent: desagioPct,
+      valor_venda_sugerido: valorVendaSugerido,
+      lucro_vendedor: lucroVendedor,
+      economia_comprador: economia
+    });
   }
 
   var form = document.getElementById("calc-form");
@@ -311,6 +330,18 @@
   document.querySelectorAll(".js-whatsapp-enrich").forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault();
+      var interesseAtual = getInteresseValue() || "indefinido";
+      var temDadosVendedor = parseNum("valor-credito") !== null;
+      var temDadosComprador =
+        parseNum("comprador-valor-credito") !== null ||
+        parseNum("comprador-capital-disponivel") !== null;
+
+      trackEvent("calc_whatsapp_click", {
+        interesse: interesseAtual,
+        has_seller_data: temDadosVendedor,
+        has_buyer_data: temDadosComprador
+      });
+
       window.open(getWhatsAppUrl(), "_blank", "noopener,noreferrer");
     });
   });
