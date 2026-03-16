@@ -24,7 +24,7 @@
     var valorParcela = parseNum("valor-parcela");
     var prazoRestante = parseNum("prazo-restante");
     var valorPago = parseNum("valor-pago");
-    var desagioPctInput = parseNum("desagio-vendedor");
+    var desagioPctInput = null;
     var capitalDisponivelComprador = parseNum("comprador-capital-disponivel");
 
     if (valorCredito === null || valorParcela === null || prazoRestante === null) {
@@ -156,7 +156,6 @@
     "valor-parcela",
     "prazo-restante",
     "valor-pago",
-    "desagio-vendedor",
     "comprador-capital-disponivel"
   ];
   inputs.forEach(function (id) {
@@ -245,7 +244,6 @@
     var valorParcela = parseNum("valor-parcela");
     var prazoRestante = parseNum("prazo-restante");
     var valorPago = parseNum("valor-pago");
-    var desagioPctInput = parseNum("desagio-vendedor");
     var saldoDevedor = valorParcela !== null && prazoRestante !== null ? valorParcela * prazoRestante : null;
     var saldoBom = valorCredito !== null && saldoDevedor !== null ? Math.max(valorCredito - saldoDevedor, 0) : null;
     var desagioPct = desagioPctInput !== null && desagioPctInput > 0 ? desagioPctInput : 0;
@@ -254,8 +252,6 @@
 
     var tipoBemVendedor = getValue("tipo-bem-vendedor");
     var administradora = getValue("administradora-consorcio");
-    var dataContemplacao = getValue("data-contemplacao");
-    var taxaAdm = parseNum("taxa-adm");
 
     var compradorValorCredito = parseNum("comprador-valor-credito");
     var compradorCapitalDisponivel = parseNum("comprador-capital-disponivel");
