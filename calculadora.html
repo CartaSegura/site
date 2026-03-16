@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simule a venda de uma carta de consórcio contemplada e veja o valor da venda, o lucro do vendedor e a vantagem do comprador. Envie seus dados para continuar a negociação pelo WhatsApp com a Carta Segura.">
+  <title>Simulador de Venda de Carta de Consórcio Contemplada — Carta Segura</title>
+  <link rel="canonical" href="https://www.cartasegura.com.br/calculadora.html">
+  <meta property="og:title" content="Simulador de Venda de Carta de Consórcio Contemplada — Carta Segura">
+  <meta property="og:description" content="Calculadora gratuita para estimar a venda de carta contemplada: valor da venda, lucro do vendedor e economia do comprador, com continuidade via WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.cartasegura.com.br/calculadora.html">
+  <meta property="og:image" content="https://www.cartasegura.com.br/og-image-carta-segura.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulador de Venda de Carta de Consórcio Contemplada — Carta Segura">
+  <meta name="twitter:description" content="Simule a venda de sua carta contemplada e receba atendimento via WhatsApp com especialistas da Carta Segura.">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-836F8RKCVV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-836F8RKCVV');
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Carta Segura - Página inicial">Carta Segura</a>
+      <button type="button" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="index.html#proposito">Propósito</a></li>
+          <li><a href="index.html#seguranca">Segurança</a></li>
+          <li><a href="o-que-e-consorcio.html">O que é consórcio</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title">Calculadora de Simulação</h1>
+        <p class="hero__tagline">Simule a venda de uma carta de consórcio contemplada e veja o valor para vendedor e comprador.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container container--prose">
+        <p class="section__lead">Preencha os dados da carta para estimar o valor da venda. Informe o <strong>prazo restante</strong> e o <strong>valor da parcela</strong> para simular. O valor da venda é o valor acordado na negociação (o que o comprador paga). Esta é uma simulação informativa; valores reais dependem de análise da administradora.</p>
+
+        <form id="calc-form" class="calc-form" novalidate>
+          <div class="calc-form-divider">
+            <h3 class="calc-form-divider__title">Seus dados para contato</h3>
+            <p class="calc-form-divider__desc">Preencha para que nossa equipe possa entrar em contato.</p>
+          </div>
+          <div class="calc-field">
+            <label class="calc-field__label" for="contato-nome">Nome</label>
+            <input type="text" id="contato-nome" class="calc-field__input" placeholder="Seu nome completo" required autocomplete="name" aria-describedby="contato-nome-desc">
+            <span id="contato-nome-desc" class="calc-field__hint">Nome completo.</span>
+          </div>
+          <div class="calc-field-row">
+            <div class="calc-field">
+              <label class="calc-field__label" for="contato-email">E-mail</label>
+              <input type="email" id="contato-email" class="calc-field__input" placeholder="seu@email.com" required autocomplete="email" aria-describedby="contato-email-desc">
+              <span id="contato-email-desc" class="calc-field__hint">E-mail para contato.</span>
+            </div>
+            <div class="calc-field">
+              <label class="calc-field__label" for="contato-telefone">Telefone</label>
+              <input type="tel" id="contato-telefone" class="calc-field__input" placeholder="(27) 99999-9999" required autocomplete="tel" aria-describedby="contato-telefone-desc">
+              <span id="contato-telefone-desc" class="calc-field__hint">WhatsApp ou telefone.</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label class="calc-field__label" for="contato-interesse">Interesse</label>
+            <div class="calc-toggle" role="radiogroup" aria-describedby="contato-interesse-desc">
+              <button type="button" class="calc-toggle__option is-active" data-value="vender" aria-pressed="true">
+                VENDEDOR
+              </button>
+              <button type="button" class="calc-toggle__option" data-value="comprar" aria-pressed="false">
+                COMPRADOR
+              </button>
+              <input type="hidden" id="contato-interesse" name="contato-interesse" value="vender" required>
+            </div>
+            <span id="contato-interesse-desc" class="calc-field__hint">Escolha se você é vendedor ou comprador de carta contemplada.</span>
+          </div>
+
+          <div id="dados-carta-section" hidden>
+            <div class="calc-form-divider">
+              <h3 class="calc-form-divider__title">Dados da carta para simulação</h3>
+              <p class="calc-form-divider__desc">Informe os valores para estimar o resultado da venda com base no crédito nominal, valor da parcela, prazo restante e deságio.</p>
+            </div>
+            <div class="calc-field calc-field--number">
+              <label class="calc-field__label" for="valor-credito">Valor total do crédito da carta (R$)</label>
+              <input type="number" id="valor-credito" class="calc-field__input" min="0" step="1000" placeholder="Ex: 80000" required aria-describedby="valor-credito-desc">
+              <span id="valor-credito-desc" class="calc-field__hint">Crédito nominal: valor total que a carta contemplada permite utilizar.</span>
+            </div>
+            <div class="calc-field-row">
+              <div class="calc-field calc-field--number">
+                <label class="calc-field__label" for="valor-parcela">Valor da parcela atual (R$)</label>
+                <input type="number" id="valor-parcela" class="calc-field__input" min="0" step="100" placeholder="Ex: 1800" required aria-describedby="valor-parcela-desc">
+                <span id="valor-parcela-desc" class="calc-field__hint">Valor da prestação mensal que está sendo paga hoje.</span>
+              </div>
+              <div class="calc-field calc-field--number">
+                <label class="calc-field__label" for="prazo-restante">Prazo restante (meses)</label>
+                <input type="number" id="prazo-restante" class="calc-field__input" min="1" step="1" placeholder="Ex: 24" required aria-describedby="prazo-restante-desc">
+                <span id="prazo-restante-desc" class="calc-field__hint">Quantidade de parcelas que ainda faltam para quitar o consórcio.</span>
+              </div>
+            </div>
+            <div class="calc-field calc-field--number">
+              <label class="calc-field__label" for="valor-pago">Valor já pago pelo vendedor (R$)</label>
+              <input type="number" id="valor-pago" class="calc-field__input" min="0" step="1000" placeholder="Ex: 45000" aria-describedby="valor-pago-desc">
+              <span id="valor-pago-desc" class="calc-field__hint">Opcional. Soma das parcelas já quitadas pelo titular da carta.</span>
+            </div>
+            <div class="calc-field-row">
+              <div class="calc-field">
+                <label class="calc-field__label" for="tipo-bem-vendedor">Tipo de bem</label>
+                <select id="tipo-bem-vendedor" class="calc-field__input" aria-describedby="tipo-bem-vendedor-desc">
+                  <option value="">Selecione</option>
+                  <option value="Imóvel">Imóvel</option>
+                  <option value="Automóvel">Automóvel</option>
+                  <option value="Veículo pesado">Veículo pesado</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <span id="tipo-bem-vendedor-desc" class="calc-field__hint">Ajuda a entender o contexto da carta no mercado.</span>
+              </div>
+              <div class="calc-field">
+                <label class="calc-field__label" for="administradora-consorcio">Administradora do consórcio</label>
+                <input type="text" id="administradora-consorcio" class="calc-field__input" placeholder="Ex: Ademicon, Embracon" aria-describedby="administradora-consorcio-desc">
+                <span id="administradora-consorcio-desc" class="calc-field__hint">Nome da administradora responsável pelo grupo de consórcio.</span>
+              </div>
+            </div>
+            <div class="calc-field-row">
+              <div class="calc-field">
+                <label class="calc-field__label" for="data-contemplacao">Data da contemplação</label>
+                <input type="date" id="data-contemplacao" class="calc-field__input" aria-describedby="data-contemplacao-desc">
+                <span id="data-contemplacao-desc" class="calc-field__hint">Quando a carta foi contemplada (aproximado ou exato).</span>
+              </div>
+              <div class="calc-field calc-field--number">
+                <label class="calc-field__label" for="taxa-adm">Taxa de administração original (%)</label>
+                <input type="number" id="taxa-adm" class="calc-field__input" min="0" max="100" step="0.1" placeholder="Ex: 18" aria-describedby="taxa-adm-desc">
+                <span id="taxa-adm-desc" class="calc-field__hint">Opcional. Percentual de taxa de administração do plano.</span>
+              </div>
+            </div>
+            <div class="calc-field calc-field--number">
+              <label class="calc-field__label" for="desagio-vendedor">Deságio desejado sobre o saldo bom (%)</label>
+              <input type="number" id="desagio-vendedor" class="calc-field__input" min="0" max="100" step="0.5" placeholder="Ex: 15" aria-describedby="desagio-vendedor-desc">
+              <span id="desagio-vendedor-desc" class="calc-field__hint">Desconto aplicado sobre o saldo bom (crédito menos saldo devedor). Deixe em branco para considerar 0%.</span>
+            </div>
+          </div>
+
+          <div id="perfil-compra-section">
+            <div class="calc-form-divider">
+              <h3 class="calc-form-divider__title">Perfil de compra (opcional)</h3>
+              <p class="calc-form-divider__desc">Se você também está avaliando a compra de uma carta, preencha para enriquecer a simulação.</p>
+            </div>
+            <div class="calc-field-row">
+            <div class="calc-field calc-field--number">
+                <label class="calc-field__label" for="comprador-valor-credito">Valor de crédito desejado (R$)</label>
+                <input type="number" id="comprador-valor-credito" class="calc-field__input" min="0" step="1000" placeholder="Ex: 80000" aria-describedby="comprador-valor-credito-desc">
+                <span id="comprador-valor-credito-desc" class="calc-field__hint">Quanto você gostaria de ter em crédito para compra do bem.</span>
+              </div>
+            <div class="calc-field calc-field--number">
+                <label class="calc-field__label" for="comprador-capital-disponivel">Capital disponível para entrada (R$)</label>
+                <input type="number" id="comprador-capital-disponivel" class="calc-field__input" min="0" step="1000" placeholder="Ex: 20000" aria-describedby="comprador-capital-disponivel-desc">
+                <span id="comprador-capital-disponivel-desc" class="calc-field__hint">Quanto você tem hoje para investir na compra da carta.</span>
+              </div>
+            </div>
+            <div class="calc-field-row">
+              <div class="calc-field">
+                <label class="calc-field__label" for="comprador-finalidade">Finalidade da compra</label>
+                <select id="comprador-finalidade" class="calc-field__input" aria-describedby="comprador-finalidade-desc">
+                  <option value="">Selecione</option>
+                  <option value="Uso próprio">Uso próprio</option>
+                  <option value="Investimento para aluguel">Investimento para aluguel</option>
+                  <option value="Complementação de crédito">Complementação de crédito</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <span id="comprador-finalidade-desc" class="calc-field__hint">Como você pretende utilizar o crédito.</span>
+              </div>
+              <div class="calc-field">
+                <label class="calc-field__label" for="comprador-tipo-bem">Tipo de bem do interesse</label>
+                <select id="comprador-tipo-bem" class="calc-field__input" aria-describedby="comprador-tipo-bem-desc">
+                  <option value="">Selecione</option>
+                  <option value="Imóvel">Imóvel</option>
+                  <option value="Automóvel">Automóvel</option>
+                  <option value="Veículo pesado">Veículo pesado</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <span id="comprador-tipo-bem-desc" class="calc-field__hint">Ajuda a direcionar melhor a análise da Carta Segura.</span>
+              </div>
+            </div>
+          </div>
+          <div class="calc-actions">
+            <button type="submit" class="btn btn--primary" id="btn-calcular" hidden>Calcular</button>
+            <a href="https://wa.me/5527992289588" id="btn-whatsapp-form" class="btn btn--whatsapp js-whatsapp-enrich" target="_blank" rel="noopener noreferrer">
+              Falar com especialista no WhatsApp
+            </a>
+            <button type="reset" class="btn btn--secondary">Limpar</button>
+          </div>
+        </form>
+
+        <div id="calc-result" class="calc-result" aria-live="polite" hidden>
+          <h2 class="section__title">Resultado da simulação</h2>
+
+          <div class="calc-result__values-wrapper">
+            <div class="calc-result__values calc-views">
+              <div class="calc-view calc-view--vendedor" id="view-vendedor">
+                <h3 class="calc-view__title">Para quem está vendendo</h3>
+                <p class="calc-view__tagline">Veja o saldo bom, o deságio aplicado e o valor sugerido de venda</p>
+                <dl class="calc-result__list">
+                  <div class="calc-result__row">
+                    <dt>Crédito nominal da carta</dt>
+                    <dd id="result-vendedor-credito">—</dd>
+                  </div>
+                  <div class="calc-result__row">
+                    <dt>Saldo devedor restante</dt>
+                    <dd id="result-vendedor-saldo-devedor">—</dd>
+                  </div>
+                  <div class="calc-result__row calc-result__row--highlight">
+                    <dt>Saldo bom (crédito − saldo devedor)</dt>
+                    <dd id="result-vendedor-saldo-bom">—</dd>
+                  </div>
+                  <div class="calc-result__row">
+                    <dt>Valor que você já pagou (investido)</dt>
+                    <dd id="result-vendedor-investido">—</dd>
+                  </div>
+                  <div class="calc-result__row">
+                    <dt>Deságio aplicado sobre o saldo bom</dt>
+                    <dd id="result-vendedor-desagio">—</dd>
+                  </div>
+                  <div class="calc-result__row calc-result__row--highlight calc-result__row--positive">
+                    <dt>Valor sugerido de venda da carta</dt>
+                    <dd id="result-vendedor-valor-venda">—</dd>
+                  </div>
+                  <div class="calc-result__row calc-result__row--muted">
+                    <dt>Lucro estimado em relação ao que você já pagou</dt>
+                    <dd id="result-lucro-vendedor">—</dd>
+                  </div>
+                </dl>
+                <p class="calc-view__takeaway" id="takeaway-vendedor">Com base no crédito, saldo devedor e deságio escolhido, esta é uma estimativa de valor de mercado para a sua carta.</p>
+              </div>
+
+              <div class="calc-view calc-view--comprador" id="view-comprador">
+                <h3 class="calc-view__title">Para quem está comprando</h3>
+                <p class="calc-view__tagline">Compare quanto investe, o crédito que recebe e se o capital disponível é suficiente</p>
+                <dl class="calc-result__list">
+                  <div class="calc-result__row">
+                    <dt>Crédito que você obtém com a carta</dt>
+                    <dd id="result-comprador-credito">—</dd>
+                  </div>
+                  <div class="calc-result__row">
+                    <dt>Valor sugerido a investir nesta carta</dt>
+                    <dd id="result-comprador-paga">—</dd>
+                  </div>
+                  <div class="calc-result__row">
+                    <dt>Seu capital disponível para investir</dt>
+                    <dd id="result-comprador-capital-disponivel">—</dd>
+                  </div>
+                  <div class="calc-result__row calc-result__row--highlight calc-result__row--positive calc-result__row--hidden" id="row-economia">
+                    <dt>Economia em relação ao valor de face do crédito</dt>
+                    <dd id="result-economia">—</dd>
+                  </div>
+                </dl>
+                <p class="calc-view__takeaway" id="takeaway-comprador">Você adquire um crédito à vista pagando menos que em um empréstimo ou financiamento tradicional.</p>
+              </div>
+            </div>
+            <div class="calc-result__overlay">
+              <p class="calc-result__overlay-text">Para uma simulação personalizada e valores exatos, fale conosco no WhatsApp.</p>
+              <a href="https://wa.me/5527992289588" class="btn btn--whatsapp btn--whatsapp-lg js-whatsapp-enrich" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+            </div>
+          </div>
+
+          <p class="calc-result__disclaimer">Simulação meramente informativa. Para operações reais e números precisos, entre em contato pela administradora do grupo ou <a href="https://wa.me/5527992289588" class="js-whatsapp-enrich" target="_blank" rel="noopener noreferrer">fale conosco no WhatsApp</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--contact">
+      <div class="container">
+        <p class="section__lead">Quer vender ou comprar uma carta contemplada com segurança?</p>
+        <div class="contact-ctas">
+          <a href="https://wa.me/5527992289588" class="btn btn--whatsapp btn--whatsapp-lg js-whatsapp-enrich" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+          <a href="index.html#contato" class="btn btn--secondary">Outros contatos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">Carta Segura</p>
+      <p class="footer__copy">Em breve, mais funcionalidades.</p>
+    </div>
+  </footer>
+
+  <script src="js/calculadora.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
